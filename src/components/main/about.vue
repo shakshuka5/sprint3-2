@@ -1,19 +1,28 @@
 <template>
   <div class="hello">
-    ™
+    <h2>About</h2>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
+  name: 'about',
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   }
 }
 </script>
 
 <style scoped>
+h2 {
+  font-size: 5em;
+  margin-bottom: 0px;
+  color: #42b983;
+  margin-top: 10%;
+}
+
+a {
+  color: #42b983;
+}
 </style>
