@@ -15,7 +15,7 @@ export default ('book-details', {
   props: ['book'],
   methods: {
     closeMe() {
-      console.log('close me!')
+      console.log('close me2!')
       this.$emit('close')
     },
     requestNextBook() {
