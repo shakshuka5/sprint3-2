@@ -1,9 +1,10 @@
 <template>
+
   <section>
     <h1>My Map</h1>
     <gmap-map
     :center="center"
-    :zoom="7"
+    :zoom="9"
     style="width: 500px; height: 300px"
   >
     <gmap-marker
@@ -35,13 +36,14 @@
   export default {
     data () {
       return {
-        center: {lat: 10.0, lng: 10.0},
+        center: {lat: 31.5, lng: 34.85},
         markers: [{
-          position: {lat: 10.0, lng: 10.0}
+          position: {lat: 31.05, lng: 34.85}
         }, {
-          position: {lat: 11.0, lng: 11.0}
+          position: {lat: 31.06, lng: 34.9}
         }]
       }
     }
   }
+  
 </script> 

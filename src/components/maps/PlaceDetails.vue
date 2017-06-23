@@ -30,7 +30,7 @@ export default {
 
 <style>
     .place-details {
-        background: gold;
+        background: lightgoldenrodyellow;
         padding: 10px;
         border-radius: 1em;
         text-align: center;
