@@ -28,7 +28,7 @@ function getPlaces() {
 
 // Used to create local data and without AJAX
 function generatePlaces() {
-  const locations = ['Home', 'Working place'];
+  const locations = ['Home', 'Working place', 'Library', 'School'];
 
   return locations.map(generatePlace);
 }
@@ -44,7 +44,34 @@ function generatePlace(location, i) {
   }
 }
 
+function savePlace(place) {
+  var idx = places.findIndex(currPlace => currPlace.id === place.id);
+  if(idx !== -1) {
+    places.splice(idx, 1, place);
+  } else {
+      place.id = calcNewId();
+      places.push(place);
+  }
+}
+
+function calcNewId() {
+    var newId = places.length;
+    places.forEach(place =>  {
+      if (place.id >= newId) newId++;
+    }, this);
+    
+    return newId;
+}
+
+function deletePlace(place) {
+  console.log('Deleting place:', place)
+  var idx = places.indexOf(place)
+  places.splice(idx, 1);
+}
+
 export default{
   getPlaces,
-  generatePlaces
+  generatePlaces,
+  savePlace,
+  deletePlace
 }

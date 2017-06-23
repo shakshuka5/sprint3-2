@@ -1,20 +1,20 @@
 <template>
   <section v-if="places">
   
-    <!--<book-filter @set-filter="setFilter"></book-filter>-->
+    <place-filter @set-filter="setFilter"></place-filter>
     <h2>We have {{places.length}} places</h2>
-    <!--<button @click="isCreateMode=true">+</button>-->
+    <button @click="isCreateMode=true">+</button>
     <ul>
-      <place-preview v-for="currPlace in placesToShow" :key="currPlace.id" @click.native="selectPlace(currPlace)" @edit="editPlace(currPlace)" :place="currPlace">
+      <place-preview v-for="currPlace in placesToShow" :key="currPlace.id" @click.native="selectPlace(currPlace)" @edit="editPlace(currPlace)" @delete="deletePlace(currPlace)" :place="currPlace">
       </place-preview>
-      <!--<place-preview v-for="currPlace in placesToShow" :key="currPlace.id" @click.native="selectPlace(currPlace)" @edit="editPlace(currPlace)" @delete="deletePlace(currPlace)" @add-to-cart="addToCart(currPlace)" :place="currPlace">
-      </place-preview>-->
     </ul>
     <place-details v-if="selectedPlace" @close="resetSelected" :place="selectedPlace">
     </place-details>
     <!--<book-details v-if="selectedBook" @close="resetSelected" @next="selectNext" :book="selectedBook">
     </book-details>-->
-  
+    
+    <place-edit v-if="editedPlace || isCreateMode" :place="editedPlace" @save="savePlace" @cancel="cancelEdit">
+    </place-edit>
     <!--<book-edit v-if="editedBook || isCreateMode" :book="editedBook" @save="saveBook">
     </book-edit>-->
   
@@ -23,10 +23,10 @@
 
 <script>
 import placeService from '../../services/place.service'
-// import cartService from '../cart.service'
 import PlacePreview from './PlacePreview'
 import PlaceDetails from './PlaceDetails'
-// import BookFilter from './BookFilter'
+import PlaceEdit from './PlaceEdit'
+import PlaceFilter from './PlaceFilter'
 export default {
   name: 'place-list',
   created() {
@@ -38,24 +38,24 @@ export default {
     return {
       places: null,
       selectedPlace: null,
-    //   editedplace: null,
-    //   isCreateMode: false,
-    //   bookFilter: null
+      editedPlace: null,
+      isCreateMode: false,
+      placeFilter: null
     }
   },
   computed: {
-    placesToShow() {
-      return this.places;
-      // if (!this.bookFilter) return this.places;
-      // return this.places.filter(place => {
-      //   return place.title.includes(this.placeFilter.byText)
-      // });
-    }
+      placesToShow() {
+        if (!this.placeFilter) return this.places;
+        return this.places.filter(place => {
+          return place.name.includes(this.placeFilter.byText);
+        });
+      }
   },
   components: {
     PlacePreview,
-    // BookFilter,
-    PlaceDetails
+    PlaceFilter,
+    PlaceDetails,
+    PlaceEdit
   },
   methods: {
     selectPlace(place) {
@@ -64,26 +64,30 @@ export default {
     },
     resetSelected() {
       this.selectedPlace = null;
-    }//,
+    },
     // selectNext() {
     //   this.selectedBook = placeservice.getNext(this.selectedBook);
     // },
-    // editBook(book) {
-    //   console.log('Editing the book', book)
-    //   this.editedBook = book;
-    // },
-    // deleteBook(book) {
-    //   placeservice.deleteBook(book);
-    // },
-    // saveBook(book) {
-    //   placeService.saveBook(book);
-    //   this.editedBook = null;
-    //   this.isCreateMode = false;
-    // },
-    // setFilter(newFilter) {
-    //   console.log('newFilter', newFilter);
-    //   this.bookFilter = newFilter;
-    // },
+    editPlace(place) {
+      console.log('Editing place', place)
+      this.editedPlace = place;
+    },
+    deletePlace(place) {
+      placeService.deletePlace(place);
+    },
+    savePlace(place) {
+      placeService.savePlace(place);
+      this.editedPlace = null;
+      this.isCreateMode = false;
+    },
+    cancelEdit(place) {
+      this.editedPlace = null;
+      this.isCreateMode = false;
+    },
+    setFilter(newFilter) {
+      console.log('newFilter', newFilter);
+      this.placeFilter = newFilter;
+    }//,
     // addToCart(book) {
     //   cartService.addToCart(book);
     // }

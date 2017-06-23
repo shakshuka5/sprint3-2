@@ -2,7 +2,7 @@
     <section class="popup place-details">
         <button @click="closeMe">x</button>
         <h1>Details of: {{place.name}}</h1>
-        <img src="http://via.placeholder.com/250x150">
+        <img src="http://via.placeholder.com/150x50">
         <h3>{{place.id}}</h3>
         <h3>{{place.lat}}</h3>
         <h3>{{place.lng}}</h3>

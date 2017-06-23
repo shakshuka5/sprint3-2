@@ -1,6 +1,6 @@
 <template>
   <section class="maps-app">
-    <h1>Hello to my Maps...</h1>
+    <h1>my Mapped Places...</h1>
     <place-list></place-list>
     <map-cmp></map-cmp>
   </section>
