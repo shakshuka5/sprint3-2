@@ -39,9 +39,9 @@ li {
 }
 
 button {
-  border: 1px solid #42b983;
+  border: 1px solid var(--main-color);
   background: inherit;
-  color: #42b983;
+  color: var(--main-color);
   border-radius: 20px;
   padding: 0px 20px;
   line-height: 2em;
