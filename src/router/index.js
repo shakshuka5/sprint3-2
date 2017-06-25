@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/main/Home'
 import Books from '@/components/books/BooksApp'
 import Emails from '@/components/emails/EmailApp'
-// import Maps from '@/components/maps/MapsApp'
+import Maps from '@/components/maps/MapsApp'
 import About from '@/components/main/About'
 import Contact from '@/components/main/Contact'
 import Element from 'element-ui'
@@ -28,11 +28,11 @@ export default new Router({
       name: 'Emails',
       component: Emails
     },
-    // {
-    //   path: '/maps',
-    //   name: 'Maps',
-    //   component: Maps
-    // },
+    {
+      path: '/maps',
+      name: 'Maps',
+      component: Maps
+    },
     {
       path: '/about',
       name: 'About',
