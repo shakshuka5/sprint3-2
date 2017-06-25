@@ -6,9 +6,7 @@
 
   </section>
     <section v-else>
-    <p> no email to preview </p>
-
-
+    <p> no emails to preview </p>
   </section>
 
 </template>
@@ -21,6 +19,11 @@ export default {
     created(){
         console.log(this.selectedEmail);
     },
+    watch:{
+       email: function () {
+         email = selectedEmail;
+    },
+    }
  }
 </script>
 
@@ -38,6 +41,6 @@ export default {
   //  margin-bottom: 15px;
   }
 
-  
+
   
 </style>

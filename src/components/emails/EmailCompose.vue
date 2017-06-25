@@ -70,9 +70,7 @@ export default {
     }
     textArea{
         height:60%;
-        rows:2; 
-        cols:20;
-        wrap: hard;
+      white-space:pre;
         resize: none;
     }
     height:400px;

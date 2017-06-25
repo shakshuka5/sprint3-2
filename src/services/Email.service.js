@@ -4,44 +4,38 @@
 var emails = []
 
 
-function getEmails() {
-  emails = generateEmails();
-  emails[0].isRead = true;
-  return emails;
-}
+// function getEmails() {
+//   emails = generateEmails();
+
+//   return emails;
+// }
 
 function changeEmailIsRead (email){
   email.isRead =true;
   // email.isRead = !email.isRead 
 }
 
-// function getEmails() {
-//   return new Promise(resolve => {
-//     // simple caching mechanism
-//     if (emails.length) {
-//       resolve(emails)
-//     } else {
-//       setTimeout(() => {
-//         emails = generateEmails()
+function getEmails() {
+  return new Promise(resolve => {
+    // simple caching mechanism
+    if (emails.length) {
+      resolve(emails)
+    } else {
+      setTimeout(() => {
+        emails = generateEmails()
+        emails[0].isRead = true;
 
-//         emails = emails.map(email => {
-//           email.quantity = 0
-//           email.tag = { val: 7 }
-//           return email
-//         })
+        // emails = emails.map(email => {
+        //   email.quantity = 0
+        //   email.tag = { val: 7 }
+        //   return email
+        // })
 
-//         resolve(emails)
-//       }, 500)
-//     }
-//   })
-// }
-
-// function getBookById(bookId) {
-//   return getBooks().then(books => {
-//     const book = books.find(book => bookId === book.id);
-//     return book;
-//   });
-// }
+        resolve(emails)
+      }, 1000)
+    }
+  })
+}
 
 function deleteTheEmail(email) {
   console.log('Deleting the email', email)

@@ -2,12 +2,14 @@
   <section class="cart">
     <h1>Cart</h1>
     <ul>
-      <li class=clean-list v-for="item in items">
-        {{item.title}} (Quantity: {{item.quantity}})
-        <p>TAG: {{item.tag}}</p>
+      <li class="clean-list" v-for="item in items">
+        {{item.title}} 
+      <br><br>
+        Quantity: {{item.quantity}}
+        <br><br>
       </li>
     </ul>
-    <p>Total: {{total}}</p>
+    <p>Total: {{total}}$</p>
     <button>Checkout</button>
   </section>
 </template>
@@ -40,6 +42,9 @@ h2 {
   margin-bottom: 0px;
   color: #42b983;
   margin-top: 10%;
+}
+li{
+  list-style: none;
 }
 
 button {

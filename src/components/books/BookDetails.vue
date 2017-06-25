@@ -4,7 +4,7 @@
     <h1>Details of: {{book.title}}</h1>
     <hr/>
     <img src="http://via.placeholder.com/150x150">
-    <h3>\${{book.price}}</h3>
+    <h3>${{book.price}}</h3>
     <p>{{book.description}}</p>
     <button @click="requestNextBook">Next > </button>
   </section>
@@ -28,7 +28,7 @@ export default ('book-details', {
 
 <style lang="scss" scoped>
 .book-details {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

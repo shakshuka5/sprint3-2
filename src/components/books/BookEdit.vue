@@ -4,7 +4,9 @@
     <h1 v-if="book">Edit: {{book.title}}</h1>
     <h1 v-else>New Book</h1>
   
-    <input type="text" v-model="bookToEdit.title" />
+    Ttile:<input type="text" v-model="bookToEdit.title" />
+    Price:<input type="number" v-model="bookToEdit.price" />$
+    Description:<textarea type="number" v-model="bookToEdit.description" /></textarea>
     <button @click="save">Save</button>
     <button @click="cancel">Cancel</button>
   </section>

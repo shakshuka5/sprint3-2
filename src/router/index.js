@@ -6,7 +6,9 @@ import Emails from '@/components/emails/EmailApp'
 // import Maps from '@/components/maps/MapsApp'
 import About from '@/components/main/About'
 import Contact from '@/components/main/Contact'
-
+import Element from 'element-ui'
+ 
+Vue.use(Element)
 Vue.use(Router)
 
 export default new Router({

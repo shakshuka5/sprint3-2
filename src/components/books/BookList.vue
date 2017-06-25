@@ -36,7 +36,7 @@ export default ('book-list', {
     booksToShow() {
       if (!this.bookFilter) return this.books
       return this.books.filter(book => {
-        return book.title.includes(this.bookFilter.byText)
+        return book.title.toUpperCase().includes(this.bookFilter.byText.toUpperCase())
       })
     }
   },
