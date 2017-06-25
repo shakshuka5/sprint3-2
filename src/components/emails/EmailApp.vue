@@ -32,7 +32,7 @@ export default {
 //       })   
     },
     components :{
-     emailList, emailService, emailDetails, emailCompose
+     emailList, emailService, emailDetails, emailCompose, emailFilter
    },
 
    data (){
