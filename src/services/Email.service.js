@@ -64,21 +64,22 @@ function saveEmail(email) {
   emails.splice(idx, 1, email)
 }
 
-export default {
-  getEmails,
-  deleteTheEmail,
-  getNext,
-  saveEmail,
-  addNewEmail
-}
+
 
 // Used to create local data with no AJAX
 function generateEmails() {
 
   const subjects = ['Get 30% off', 'Get started with OneNote', 'Discover interesting projects on GitHub ', 'Snit, welcome', 'Lorem Inspum', ' SALE NOW ON - Up to 15% off 200,000 seats'];
-
-
   return subjects.map(generateEmail)
+}
+
+function calculateReadEmails ()
+{
+  var count= 0;
+  emails.forEach(email =>{
+    if (email.isRead === true) count++;
+  }) 
+  return count;
 }
 
 function generateEmail(subject, i) {
@@ -93,6 +94,17 @@ function generateEmail(subject, i) {
     `,
     isRead: false
   }
+}
+
+export default {
+  getEmails,
+  deleteTheEmail,
+  getNext,
+  saveEmail,
+  addNewEmail,
+  changeEmailIsRead,
+  calculateReadEmails
+  
 }
 
 // function getProductsFromGenericAPI() {

@@ -2,7 +2,7 @@
   <section class="cart">
     <h1>Cart</h1>
     <ul>
-      <li v-for="item in items">
+      <li class=clean-list v-for="item in items">
         {{item.title}} (Quantity: {{item.quantity}})
         <p>TAG: {{item.tag}}</p>
       </li>

@@ -33,7 +33,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+ 
+  ul{
+    padding:0;
+  }
   .email-list {
     cursor: pointer; 
     margin left: 5px;

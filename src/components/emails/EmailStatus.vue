@@ -1,23 +1,22 @@
 <template>
-  <section class="email-preview">
-      <li :class="classObject">
-          <h1 > <button @click.stop="deleteEmail"> X </button> {{email.subject}}   </h1>
-          <p> {{email.message}}</p>
-       
-      </li>
+    <div id="myProgress">
+     <div :style="{ width: statusBar + '%' }" id="myBar">{{statusBar}}%</div>
+    </div>
 
-
-  </section>
 </template>
 
 <script>
-import { EventBus } from  '../../services/BusEvent'
 export default {
-    name: 'email-preview',
-    props: ['email'] ,
+    name: 'email-status',
+    props: ['statusBar'] ,
     created(){
         //  console.log(this.email);
     },
+    data (){
+    return {
+      emailread: 10 
+    }
+     },
     methods: {
      deleteEmail() {
       console.log('Request Delete')
@@ -36,37 +35,21 @@ export default {
 
 <style lang="scss" scoped>
 
-  .emailRead {
-      background-color: var(--green-color);
-      color:white;
-  }
-  
-  button{
-    width:10px;
-    text-align: center;
-    background-color: red;
-    border: 0.5px solid var(--main-color);
-    margin-right: 2px;
+  #myProgress {
+//   width: 100vw;
+  background-color: #ddd;
+//   margin: 1em 4em 1em 2em;
+  border-radius:20px;
   }
 
-  h1 {
-      margin: 0.5px;
-  }
-  p {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-  }
-  li
-  {
-  
-      transition: background-color  1s;
-      display:flex;
-      flex-flow: column;
-      width: 100%;
-      border: 1px solid var(--main-color);
-      padding: 1%;
-      height:80px;
-      flex-wrap: nowrap;
-  }
+#myBar {
+transition: all 0.5s;
+  //width: 10%;
+  height: 30px;
+  background-color: var(--green-color);
+  text-align: center;
+  line-height: 2em;
+  border-radius:20px;
+  color: white;
+}
 </style>

@@ -8,6 +8,7 @@
         <email-list :emails="emailsToShow" @select="selectEmail"></email-list>
         <email-details :email="selectedEmail"> </email-details>
     </div>
+    <email-status :statusBar="statusBar" ></email-status>
 </section>
 </template>
 
@@ -19,6 +20,7 @@ import emailList from './EmailList'
 import emailDetails from './EmailDetails'
 import emailCompose from './EmailCompose'
 import emailFilter from './EmailFilter'
+import emailStatus from './EmailStatus'
 
 export default {
     name: 'email-app',
@@ -34,7 +36,7 @@ export default {
 //       })   
     },
     components :{
-     emailList, emailService, emailDetails, emailCompose, emailFilter
+     emailList, emailService, emailDetails, emailCompose, emailFilter, emailStatus
    },
 
    data (){
@@ -58,11 +60,14 @@ export default {
                     return email.isRead === false;
                 })
             }
+        },
+        statusBar(){
+           return parseInt((emailService.calculateReadEmails()/this.emails.length)*100);
         }
     },
    methods: {
         emailStatus(email){
-            email.isRead= true;
+            emailService.changeEmailIsRead(email);
         },
         selectEmail(email) {
              this.emailStatus(email)
@@ -95,5 +100,11 @@ export default {
             flex-flow : row nowrap;  
             justify-content: baseline;
             margin: 1em 2em;
+            align-items: center;
+    }
+
+    .email-app{
+      display: flex;
+      flex-flow: column;   
     }
 </style>
