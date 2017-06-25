@@ -1,18 +1,17 @@
 <template>
-  <section class="popup place-edit">
-        <h1 v-if="place">Editing place</h1>
-        <h1 v-else>New Place</h1>
-        <!--lat: 35+i,
-            lng: 34+i,
-            tags: ['fun','super fun']-->
+    <section class="popup place-edit">
+        <h5 v-if="place">Editing place</h5>
+        <h5 v-else>New Place</h5>
         <label> name: </label>
-        <input type="name" v-model="placeToEdit.name" />
-        <label> lat: </label>       
-        <input type="lat" v-model="placeToEdit.lat" />
+        <input type="text" v-model="placeToEdit.name" />
+        <label> lat: </label>
+        <input type="text" v-model="placeToEdit.position.lat" />
+        <!--<input type="text" v-model="this.placeToEdit.lat" />-->
         <label> lng: </label>
-        <input type="lng" v-model="placeToEdit.lng" />
+        <input type="text" v-model="placeToEdit.position.lng" />
+        <!--<input type="text" v-model="this.placeToEdit.lng" />-->
         <label> tags: </label>
-        <input type="tags" v-model="placeToEdit.tags" />
+        <input type="text" v-model="placeToEdit.tags" />
 
         <button @click="save">Save</button>
         <button @click="cancel">Cancel</button>
@@ -25,11 +24,12 @@ export default {
     props: ['place'],
     data() {
         return {
-        placeToEdit: null
+            placeToEdit: null
         }
     },
     created() {
-        this.placeToEdit = Object.assign({}, this.place)
+        this.placeToEdit = Object.assign({}, this.place);
+        console.log('lalal', this.placeToEdit);
     },
     methods: {
         save() {

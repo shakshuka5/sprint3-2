@@ -1,17 +1,13 @@
 <template>
   <li class="place-preview">
-             <h2>{{place.name}}</h2>
-             <h2>{{place.id}}</h2>
-             <img src="http://via.placeholder.com/150x50">
-             <!--<h4>{{place.lat}}</h4>
-             <h4>{{place.lng}}</h4>
-             <h5>{{place.tags}}</h5>-->
-
-             <!--<h3>\${{place.tags}}</h3>-->
-             <button @click.stop="editPlace">&#9998;</button>
-             <button @click.stop="deletePlace">x</button>
-             <!--<button @click.stop="addToCart">Add to Cart</button>-->
-         </li>
+    <div>
+        <h6>{{place.name}}</h6>
+    </div>
+    <div>
+        <button @click.stop="editPlace">&#9998;</button>
+        <button @click.stop="deletePlace">x</button>
+    </div>
+  </li>
 </template>
 
 
@@ -35,5 +31,14 @@
 
 
 <style scoped>
-
+h6 {
+    margin:0px;
+}
+button {
+    /*font-size: 10px;*/
+    border: 1px solid var(--green-color);
+    border-radius: 7px;
+    padding: 2px 4px;
+    cursor: pointer;
+}
 </style>

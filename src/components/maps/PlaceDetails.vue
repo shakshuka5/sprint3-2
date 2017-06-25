@@ -2,10 +2,12 @@
     <section class="popup place-details">
         <button @click="closeMe">x</button>
         <h1>Details of: {{place.name}}</h1>
-        <img src="http://via.placeholder.com/150x50">
+        <!--<img src="http://via.placeholder.com/150x50">-->
         <h3>{{place.id}}</h3>
-        <h3>{{place.lat}}</h3>
-        <h3>{{place.lng}}</h3>
+        <h3>{{place.position.lat}}</h3>
+        <h3>{{place.position.lng}}</h3>
+        <!--<h3>{{place.lat}}</h3>
+        <h3>{{place.lng}}</h3>-->
         <h3>{{place.tags}}</h3>
         <!--<button @click="requestNextBook">Next > </button>-->
     </section>

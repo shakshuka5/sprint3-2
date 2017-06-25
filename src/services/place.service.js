@@ -18,7 +18,7 @@ function getPlaces() {
         //   place.tags = ['fun','super fun'];
         //   return place;
         // })
-        
+
         resolve(places);
       }, 500);
     }
@@ -38,29 +38,29 @@ function generatePlace(location, i) {
   return {
     id: i + 1,
     name: `${location}`,
-    lat: 35+i,
-    lng: 34+i,
-    tags: ['fun','super fun']
+    position: { lat: 32-0.1*i, lng: 35.4+0.1*i },
+    position: { lat: 32-0.1*i, lng: 35.4+0.1*i },
+    tags: ['fun', 'super fun']
   }
 }
 
 function savePlace(place) {
   var idx = places.findIndex(currPlace => currPlace.id === place.id);
-  if(idx !== -1) {
+  if (idx !== -1) {
     places.splice(idx, 1, place);
   } else {
-      place.id = calcNewId();
-      places.push(place);
+    place.id = calcNewId();
+    places.push(place);
   }
 }
 
 function calcNewId() {
-    var newId = places.length;
-    places.forEach(place =>  {
-      if (place.id >= newId) newId++;
-    }, this);
-    
-    return newId;
+  var newId = places.length;
+  places.forEach(place => {
+    if (place.id >= newId) newId++;
+  }, this);
+
+  return newId;
 }
 
 function deletePlace(place) {
@@ -69,7 +69,7 @@ function deletePlace(place) {
   places.splice(idx, 1);
 }
 
-export default{
+export default {
   getPlaces,
   generatePlaces,
   savePlace,

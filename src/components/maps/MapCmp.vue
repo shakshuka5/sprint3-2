@@ -1,20 +1,29 @@
 <template>
 
   <section>
-    <h1>My Map</h1>
+    <!--<h1>My Map</h1>-->
     <gmap-map
-    :center="center"
-    :zoom="9"
+    :center=center 
+    :zoom="11"
     style="width: 500px; height: 300px"
   >
-    <gmap-marker
+    <!--<gmap-marker
       :key="index"
       v-for="(m, index) in markers"
       :position="m.position"
       :clickable="true"
       :draggable="true"
       @click="center=m.position">
+    </gmap-marker>-->
+
+    <gmap-marker
+      v-for="(place, index) in places" :key="place.id"
+      :position="place.position"
+      :clickable="true"
+      :draggable="true"
+      @click="center=place.position">
     </gmap-marker>
+
   </gmap-map>
 </section>
 </template>
@@ -34,16 +43,39 @@
   });
  
   export default {
+    name: 'map-cmp',
+    props: ['places'],
     data () {
       return {
-        center: {lat: 31.5, lng: 34.85},
-        markers: [{
-          position: {lat: 31.05, lng: 34.85}
-        }, {
-          position: {lat: 31.06, lng: 34.9}
-        }]
+        center: {lat: 31.5, lng: 34.85}
+        //myPosition: {lat: currPlace.lat, lng: currPlace.lng}
+        // markers: [{
+        //   position: {lat: 31.05, lng: 34.85}
+        // }, {
+        //   position: {lat: 31.06, lng: 34.9}
+        // }]
       }
+    },
+    created () {
+      // this.center = this.places ? this.places[0].position: {lat: 31.5, lng: 34.85};
+      // console.log(this.center);
+    },
+    mounted () {
+      // this.initMapPlaces();
+      // console.log('creating map');
+      // console.log('map places:', this.places);
+    },
+    methods: {
+        // initMapPlaces() {
+        //   this.center: {lat: 31.5, lng: 34.85},
+        //   this.markers: [{
+        //         position: {lat: 31.05, lng: 34.85}
+        //   }, {
+        //         position: {lat: 31.06, lng: 34.9}
+        //       }]
+        //   }
     }
-  }
   
+  
+  }
 </script> 
