@@ -1,9 +1,7 @@
 <template>
   <section class="maps-app">
-    <!--<h1>my Mapped Places...</h1>-->
-    <map-cmp :places="places"></map-cmp>
+    <map-cmp @click.native="test1" :places="places"></map-cmp>
 
-    <!--<h2>We have {{this.places.length}} places</h2>-->
     <div class="list-filter-container">
       <place-filter @set-filter="setFilter"></place-filter>
       <place-list @selectPlace="selectPlace" 
@@ -66,15 +64,11 @@ export default {
     resetSelected() {
       this.selectedPlace = null;
     },
-    // selectNext() {
-    //   this.selectedBook = placeservice.getNext(this.selectedBook);
-    // },
     editPlace(place) {
       console.log('Editing place', place)
       this.editedPlace = place;
     },
     deletePlace(place) {
-      // console.log('deletePlace in app', place);
       placeService.deletePlace(place);
     },
     savePlace(place) {
@@ -89,6 +83,9 @@ export default {
     setFilter(newFilter) {
       console.log('newFilter', newFilter);
       this.placeFilter = newFilter;
+    },
+    test1() {
+      console.log('map clicked...');
     }
   }
 }

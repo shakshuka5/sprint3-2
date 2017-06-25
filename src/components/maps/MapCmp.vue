@@ -47,7 +47,7 @@
     props: ['places'],
     data () {
       return {
-        center: {lat: 31.5, lng: 34.85}
+        center: {lat: 32, lng: 35.4}
         //myPosition: {lat: currPlace.lat, lng: currPlace.lng}
         // markers: [{
         //   position: {lat: 31.05, lng: 34.85}
@@ -65,15 +65,7 @@
       // console.log('creating map');
       // console.log('map places:', this.places);
     },
-    methods: {
-        // initMapPlaces() {
-        //   this.center: {lat: 31.5, lng: 34.85},
-        //   this.markers: [{
-        //         position: {lat: 31.05, lng: 34.85}
-        //   }, {
-        //         position: {lat: 31.06, lng: 34.9}
-        //       }]
-        //   }
+   methods: {
     }
   
   
