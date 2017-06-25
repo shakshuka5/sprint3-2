@@ -1,7 +1,7 @@
 <template>
   <section class="email-preview">
       <li :class="classObject">
-          <h1 > <button @click.stop="deleteEmail"> X </button> {{email.subject}}   </h1>
+          <h1 > <button @click.stop="deleteEmail"> 🗑 </button> {{email.subject}}   </h1>
           <p> {{email.message}}</p>
        
       </li>
@@ -42,10 +42,12 @@ export default {
   }
   
   button{
-    width:10px;
+    width:15px;
     text-align: center;
-    background-color: red;
-    border: 0.5px solid var(--main-color);
+    vertical-align: middle;
+    // background-color: red;
+    // border: 0.5px solid var(--main-color);
+    padding:1px;
     margin-right: 2px;
   }
 

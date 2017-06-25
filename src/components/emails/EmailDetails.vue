@@ -17,7 +17,7 @@
 
 export default {
   name:  'email-details',
-props: ['email'],
+  props: ['email'],
     created(){
         console.log(this.selectedEmail);
     },

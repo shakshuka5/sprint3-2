@@ -49,9 +49,9 @@ function deleteTheEmail(email) {
   emails.splice(idx, 1)
 }
 
-function createNewEmail(email) {
+function addNewEmail(email) {
   console.log('new email', email)
-   emails.unshift(email);
+  setTimeout(function() {emails.unshift(email)},1000)
 }
 function getNext(email) {
   // select next in a cyclic way
@@ -68,7 +68,8 @@ export default {
   getEmails,
   deleteTheEmail,
   getNext,
-  saveEmail
+  saveEmail,
+  addNewEmail
 }
 
 // Used to create local data with no AJAX

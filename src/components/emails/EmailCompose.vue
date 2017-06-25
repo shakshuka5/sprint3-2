@@ -3,8 +3,8 @@
     <div v-if="isCreatingMode" class="new-email-compose"> 
         <div class="form-new-email">
              Subject: <input type="text" v-model="subject" placeholder="Subject goes here...">
-             Content: <textArea type="text" v-model="message" placeholder="Content goes here...">
-                 </textarea>
+             Content: <textarea type="text" v-model="message" placeholder="Content goes here...">
+             </textarea>
                <button @click="save">Save</button>
               <button @click="isCreateMode">Cancel</button>
         </div>
@@ -18,6 +18,12 @@
 </template>
 
 <script>
+let emails_data = {
+          isCreatingMode: false,
+          message: null,
+          subject: null
+       }
+
 export default {
     name: 'email-compose',
     methods: {
@@ -26,16 +32,14 @@ export default {
         },
         save(){
             this.isCreatingMode = !this.isCreatingMode;
-            console.log('saving email: ' + this.subject + this.message)
-            this.$emit('createNewEmail', this.subject, this.message)
+           // console.log('saving email: ' , this.subject , this.message)
+            this.$emit('newEmail', this.subject, this.message)
+            this.subject = "";
+            this.message ="";
         }
     },
      data (){
-       return {
-          isCreatingMode: false,
-          subject: null,
-          message: null
-       }
+       return emails_data;
     },
 }
 </script>
