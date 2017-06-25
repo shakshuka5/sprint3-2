@@ -39,7 +39,6 @@ function generatePlace(location, i) {
     id: i + 1,
     name: `${location}`,
     position: { lat: 32-0.1*i, lng: 35.4+0.1*i },
-    position: { lat: 32-0.1*i, lng: 35.4+0.1*i },
     tags: ['fun', 'super fun']
   }
 }
