@@ -1,11 +1,13 @@
 <template>
 <section class="email-app">
-    <email-compose @newEmail="createNewEmail"></email-compose>
-    <email-filter></email-filter>
-    <section class="email-show">     
-        <email-list :emails="emails" @select="selectEmail"></email-list>
+    <div class="tools-bar">
+        <email-filter  @filter="filterEmails"></email-filter>
+        <email-compose @newEmail="createNewEmail"></email-compose>
+    </div>
+    <div class="email-show">     
+        <email-list :emails="emailsToShow" @select="selectEmail"></email-list>
         <email-details :email="selectedEmail"> </email-details>
-    </section>
+    </div>
 </section>
 </template>
 
@@ -38,9 +40,26 @@ export default {
    data (){
        return {
            emails: emailService.getEmails(),
-           selectedEmail: {subject:"hello", message:"fgfggf"}
+           selectedEmail: {subject:"hello", message:"fgfggf"},
+           filter: 'all'
+        // emailsToShow:null
        }
    },
+    computed: {
+        emailsToShow() {
+            console.log('computed')
+            if (this.filter&&this.filter==='all') return this.emails;
+            if (this.filter === 'read'){
+                 return this.emails.filter(email => {
+                    return email.isRead === true;
+                })
+            } else{
+                 return this.emails.filter(email => {
+                    return email.isRead === false;
+                })
+            }
+        }
+    },
    methods: {
         emailStatus(email){
             email.isRead= true;
@@ -55,7 +74,10 @@ export default {
             const newEmail= {"subject":subject, "message":message, "isRead": isRead}
             console.log(newEmail.subject, newEmail.message, newEmail.isRead);
             emailService.addNewEmail(newEmail);
-
+        },
+        filterEmails(emailsToShow ){
+            console.log('email App', emailsToShow);
+            this.filter = emailsToShow;
         }
     }     
 }
@@ -67,4 +89,11 @@ export default {
                 display: flex;
                 flex-flow : row wrap;
             }
+
+    .tools-bar {
+            display: flex;
+            flex-flow : row nowrap;  
+            justify-content: baseline;
+            margin: 1em 2em;
+    }
 </style>

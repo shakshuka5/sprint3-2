@@ -1,12 +1,12 @@
 <template>
 <section>
-    <input  type="radio" id="one" value="read" v-model="picked">
+    <input class="radio-btn" type="radio" id="one" value="read" v-model="picked">
     <label for="one">Read</label>
-    <input type="radio" id="two" value="unread" v-model="picked">
+    <input class="radio-btn" type="radio" id="two" value="unread" v-model="picked">
     <label for="two">Unread</label>
-    <input type="radio" id="two" value="all" v-model="picked">
-    <label for="two">All</label>
-    <span>Picked: {{ picked }}</span>
+    <input class="radio-btn" type="radio" id="two" value="all" v-model="picked">
+    <label for="two" selected="selected">All</label>
+    <!--<span>Picked: {{ picked }}</span>-->
     </section>
 </template>
 
@@ -15,20 +15,19 @@ export default {
   name: 'email-filter', 
   data (){
     return {
-      picked: null 
+      picked: 'all' 
     }
   },
   methods: {
-    renderEmails (){
-      console.log('rendering...')
-      
-
+    filterEmails (picked){
+      console.log('rendering...', picked)
+      this.$emit('filter',picked )
     }
   },
   watch: {
     picked: function (val) {
       console.log(val);
-      this.renderEmails(val)
+      this.filterEmails(val)
     }
   } 
 }  
@@ -36,4 +35,16 @@ export default {
 
 <style scoped>
 
+.radio-btn {
+    border: 1px solid #bfcbd9;
+    border-radius: 100%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    box-sizing: border-box;
+}
 </style>

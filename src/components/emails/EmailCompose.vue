@@ -18,11 +18,9 @@
 </template>
 
 <script>
-let emails_data = {
-          isCreatingMode: false,
-          message: null,
-          subject: null
-       }
+// let emails_data = {
+//       
+//        }
 
 export default {
     name: 'email-compose',
@@ -39,7 +37,11 @@ export default {
         }
     },
      data (){
-       return emails_data;
+       return{
+            isCreatingMode: false,
+            message: null,
+            subject: null
+       }
     },
 }
 </script>
@@ -50,8 +52,9 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var( --main-color);
-    opacity: 0.9; 
+    // background-color: var( --main-color);
+    background-color: rgba(0,0,0,0.6);
+    // opacity: 0.9; 
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -67,12 +70,38 @@ export default {
     }
     textArea{
         height:60%;
+        rows:2; 
+        cols:20;
+        wrap: hard;
+        resize: none;
     }
     height:400px;
     width:400px;
+    padding: 2em;
+    border: 17px solid rgba(0,0,0,0.5);
+    border-radius: 1em; 
     background-color: white;
-   // opacity:1;
     color: var(--green-color);
+}
+
+button {
+  border: 1px solid var(--main-color);
+  background: inherit;
+  color: var(--main-color);
+  border-radius: 20px;
+  padding: 0px 20px;
+  line-height: 2em;
+  margin: 0.5em;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.5s;
+}
+
+button:hover {
+  background: #42b983;
+  color: white;
 }
 
 </style>

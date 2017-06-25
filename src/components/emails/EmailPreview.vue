@@ -61,8 +61,7 @@ export default {
   }
   li
   {
-  
-      transition: background-color  1s;
+      transition: all  0.5s;
       display:flex;
       flex-flow: column;
       width: 100%;
@@ -70,5 +69,9 @@ export default {
       padding: 1%;
       height:80px;
       flex-wrap: nowrap;
+      &:hover {
+         opacity: 0.8;
+        }
   }
+
 </style>
