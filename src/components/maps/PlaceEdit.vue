@@ -1,7 +1,9 @@
 <template>
     <section class="popup place-edit">
+        <!--{{placeToEdit}}-->
         <h5 v-if="place">Editing place</h5>
         <h5 v-else>New Place</h5>
+        
         <div>
             <label> name: </label>
             <input type="text" v-model="placeToEdit.name" />

@@ -9,7 +9,7 @@
                   @deletePlace="deletePlace" 
                   :placesToShow="placesToShow">
       </place-list>
-      <button @click="isCreateMode=true">+</button>
+      <button @click="setCreateMode">+</button>
     </div>
     
     <place-details v-if="selectedPlace" @close="resetSelected" :place="selectedPlace"></place-details>
@@ -86,6 +86,10 @@ export default {
     },
     test1() {
       console.log('map clicked...');
+    },
+    setCreateMode() {
+      this.isCreateMode = true;
+      this.editedPlace = placeService.getEmptyPlace();
     }
   }
 }
